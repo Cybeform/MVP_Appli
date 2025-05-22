@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+python-docx
+sounddevice
+numpy
+scipy
+openai>=1.0.0
+python-multipart
+pydub
+pyannote.audio
+torch>=1.10.0

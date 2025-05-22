@@ -1,0 +1,30 @@
+# Python virtualenv, caches et .pyc
+backend/.venv/
+__pycache__/
+*.pyc
+
+# Node modules et build React
+frontend/node_modules/
+frontend/build/
+
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Virtual env
+backend/.venv/
+
+# Fichiers audio volumineux (si vous ne voulez pas les versionner)
+backend/recordings/*.wav
+
+# Node modules & caches
+frontend/btp-meeting-ui/node_modules/
+frontend/btp-meeting-ui/node_modules/.cache/
+
+# Environnement virtuel Python
+backend/.venv/
+
+# Gros fichiers audio
+backend/recordings/*.wav
