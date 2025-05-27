@@ -5,6 +5,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build"
+  
   },
   "dependencies": {
     "framer-motion": "^8.0.0",
@@ -30,4 +31,5 @@
       "last 1 safari version"
     ]
   }
+  
 }

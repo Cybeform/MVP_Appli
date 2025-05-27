@@ -49,8 +49,6 @@ async def favicon():
     return FileResponse(os.path.join(os.path.dirname(__file__), "static", "favicon.ico"))
 
 
-
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

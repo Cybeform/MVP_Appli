@@ -8,6 +8,8 @@ frontend/node_modules/
 frontend/build/
 
 
+.env
+
 # Visual Studio
 .vs/
 *.user
