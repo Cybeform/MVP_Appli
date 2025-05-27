@@ -7,14 +7,23 @@ from fastapi import HTTPException, Header
 # Clé secrète pour signer vos tokens (générez-en une longue et placez-la en SECRET_KEY)
 SECRET_KEY = os.environ.get("SECRET_KEY", "change_me_very_secret")
 
-# Chargez vos codes d’accès
-with open(os.path.join(os.path.dirname(__file__), "codes.json")) as f:
-    CODES = json.load(f)
+# Chargez vos codes d'accès
+try:
+    codes_path = os.path.join(os.path.dirname(__file__), "codes.json")
+    if not os.path.exists(codes_path):
+        print(f"Warning: codes.json not found at {codes_path}")
+        CODES = {"AB12CD34": "2025-05-29T17:00:00Z"}  # Code par défaut
+    else:
+        with open(codes_path) as f:
+            CODES = json.load(f)
+except Exception as e:
+    print(f"Error loading codes.json: {e}")
+    CODES = {"AB12CD34": "2025-05-29T17:00:00Z"}  # Code par défaut en cas d'erreur
 
 def validate_code(code: str):
     expires = CODES.get(code)
     if not expires:
-        raise HTTPException(401, "Code invalide")
+        raise HTTPException(401, "Code invalide ou expiré")
 
     # on crée deux datetimes aware en UTC pour comparaison fiable
     expires_dt = datetime.fromisoformat(expires)
@@ -25,7 +34,7 @@ def validate_code(code: str):
     if now_utc > expires_dt:
         raise HTTPException(401, "Code expiré")
 
-    # Génère un token valable jusqu’à expires
+    # Génère un token valable jusqu'à expires
     token = jwt.encode({"sub": code, "exp": expires}, SECRET_KEY, algorithm="HS256")
     return token
 
