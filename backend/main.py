@@ -51,6 +51,7 @@ async def favicon():
 
 origins = [
     "https://jazzy-truffle-4ada47.netlify.app",
+    "https://6835df33c3c24a844b437e2b--jazzy-truffle-4ada47.netlify.app",
     "http://localhost:3000",
     "http://127.0.0.1:3000"
 ]
