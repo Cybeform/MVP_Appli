@@ -8,7 +8,8 @@ export default function Login() {
 
   const submit = async e => {
     e.preventDefault()
-    const res = await fetch('http://localhost:8000/validate-code', {
+      const BACK = process.env.REACT_APP_BACKEND_URL;
+      const res = await fetch(`${BACK}/validate-code`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ code }),

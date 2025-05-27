@@ -1,5 +1,15 @@
 // remplacer toute référence à "/api/..." par l’URL complète
-const BASE = "http://localhost:8000";
+const BASE = process.env.REACT_APP_BACKEND_URL;
+
+
+export async function validateCode(code) {
+  return fetch(`${BASE}/validate-code`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ code }),
+  });
+}
+
 
 export async function startRecording() {
   const res = await fetch(`${BASE}/start-recording`, { method: "POST" });
