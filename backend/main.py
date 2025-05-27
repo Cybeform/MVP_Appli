@@ -52,6 +52,7 @@ async def favicon():
 origins = [
     "https://jazzy-truffle-4ada47.netlify.app",
     "https://6835df33c3c24a844b437e2b--jazzy-truffle-4ada47.netlify.app",
+    "*--jazzy-truffle-4ada47.netlify.app",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "https://mvpappli-production.up.railway.app"
@@ -59,10 +60,10 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,       # autorise ce(s) domaine(s)
+    allow_origins=["*"],       # autorise tous les domaines temporairement
     allow_credentials=True,
-    allow_methods=["*"],         # GET, POST, OPTIONS…
-    allow_headers=["*"],         # Content-Type, Authorization…
+    allow_methods=["*"],       # GET, POST, OPTIONS…
+    allow_headers=["*"],       # Content-Type, Authorization…
 )
 
 # —————————————————————————————————————————
