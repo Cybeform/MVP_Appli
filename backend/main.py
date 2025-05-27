@@ -49,11 +49,16 @@ async def favicon():
     return FileResponse(os.path.join(os.path.dirname(__file__), "static", "favicon.ico"))
 
 
+origins = [
+    "https://jazzy-truffle-4ada47.netlify.app",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=origins,       # autorise ce(s) domaine(s)
+    allow_credentials=True,
+    allow_methods=["*"],         # GET, POST, OPTIONS…
+    allow_headers=["*"],         # Content-Type, Authorization…
 )
 
 # —————————————————————————————————————————
